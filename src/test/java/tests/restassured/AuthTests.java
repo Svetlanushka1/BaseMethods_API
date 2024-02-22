@@ -10,7 +10,7 @@ public class AuthTests extends BaseAPITest{
         softAssert.assertEquals(100, 200,
                 "100 not equal 200");
 
-        softAssert.assertEquals(userAPI.getStatusCodeResponseLogin(user), 201,
+        softAssert.assertEquals(userAPI.getStatusCodeResponseLogin(userFromProperty), 201,
                 "status code not 200");
 
         softAssert.assertAll();
@@ -21,7 +21,7 @@ public class AuthTests extends BaseAPITest{
         Assert.assertEquals(100, 200,
                 "100 not equal 200");
 
-        Assert.assertEquals(userAPI.getStatusCodeResponseLogin(user), 201,
+        Assert.assertEquals(userAPI.getStatusCodeResponseLogin(userFromProperty), 201,
                 "status code not 200");
 
     }

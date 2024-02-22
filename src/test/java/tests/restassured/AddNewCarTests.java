@@ -3,7 +3,7 @@ package tests.restassured;
 import dto.CarDTO;
 import org.testng.annotations.Test;
 
-public class AddCarTests extends BaseAPITest{
+public class AddNewCarTests extends BaseAPITest{
 
     @Test
     public void testAddNewCarResponse() {
@@ -26,4 +26,20 @@ public class AddCarTests extends BaseAPITest{
                 "Car added successfully");
         softAssert.assertAll();
     }
+    /*   RestAssured
+                .given()
+                .log().all()
+                .when()
+                .log().all()
+                .contentType(ContentType.JSON)
+                .header("", "Bearer" + getToken())
+                .body(car)
+                .post(baseURI + apiAddCarURI)
+                .then()
+                .log().all()
+                .satatusCode(200)
+                .assertThat().body("message",startsWith("message",startsWith("message"));
+        ;
+
+    }*/
 }
