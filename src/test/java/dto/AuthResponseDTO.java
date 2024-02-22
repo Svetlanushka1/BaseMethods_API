@@ -8,7 +8,11 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class AuthDTO {
+public class AuthResponseDTO {
+    /*
+    TokenDto{
+accessToken	string
+}
+     */
     String accessToken;
 }

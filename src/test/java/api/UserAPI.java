@@ -25,6 +25,35 @@ import static com.jayway.restassured.RestAssured.given;
             }
             return responseLogin.getBody().as(AuthDTO.class).getAccessToken();
         }
+            /*
+    public String getToken() {
+
+AuthenticationBodyDto{
+username*	string
+password*	string
+pattern: ^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$#^&*!])(?=.*[a-zA-Z]).{8,}$
+
+/*
+
+        AuthRequestDTO loginBody = AuthRequestDTO.builder()
+                .username("haifa@gmail.com")
+                .password("Haifa082022$").build();
+
+    String token = RestAssured
+            .given()
+                 .log().all()
+            .when()
+                    .contentType(ContentType.JSON)
+                    .body(loginBody)
+                    .post(BASE_URI + apiLoginURI)
+            .then()
+                    .log().all()
+                    .statusCode(200)
+                    .extract().response().jsonPath().getString("token");
+        System.out.println("token: " + token);
+        return token;
+    }
+ */
 
         public int getStatusCodeResponseLogin(UserDTO user) {
             if(responseLogin == null) {

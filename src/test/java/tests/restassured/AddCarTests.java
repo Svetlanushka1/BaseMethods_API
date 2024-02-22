@@ -1,6 +1,6 @@
 package tests.restassured;
 
-import dto.AddNewCarDTO;
+import dto.CarDTO;
 import org.testng.annotations.Test;
 
 public class AddCarTests extends BaseAPITest{
@@ -9,7 +9,7 @@ public class AddCarTests extends BaseAPITest{
     public void testAddNewCarResponse() {
 
         String serNumber = randomUtils.generateDigitsString(12);
-        AddNewCarDTO addNewCar = AddNewCarDTO.builder()
+        CarDTO addNewCar = CarDTO.builder()
                 .serialNumber(serNumber)
                 .manufacture("qa40")
                 .model("corsa")

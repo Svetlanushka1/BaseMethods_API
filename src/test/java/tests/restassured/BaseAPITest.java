@@ -6,7 +6,7 @@ import dto.UserDTO;
 
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
-import utils.RandomUtils;
+import data.RandomUtils;
 
 public class BaseAPITest {
     String token = "";

@@ -8,7 +8,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddNewCarDTO {
+public class CarDTO {
 
     // {
     //  "serialNumber": "1234578983",
@@ -22,6 +22,25 @@ public class AddNewCarDTO {
     //  "about": "abc",
     //  "city": "Tel Aviv"
     //}
+        /*
+    CarDto{
+serialNumber*	string
+manufacture*	string
+model*	string
+year*	string
+fuel*	string
+seats*	integer($int32)
+carClass*	string
+pricePerDay*	number($double)
+about	string
+city*	string
+lat	number($double)
+lng	number($double)
+image	string
+owner	string
+bookedPeriods	[...]
+}
+     */
 
     String serialNumber;
     String manufacture;
@@ -30,7 +49,15 @@ public class AddNewCarDTO {
     String fuel;
     int seats;
     String carClass;
-    int pricePerDay;
+   // int pricePerDay;
+    double pricePerDay;
     String about;
     String city;
+
+
+
+
+
+
+
 }
