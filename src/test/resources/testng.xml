@@ -3,8 +3,8 @@
     <test name="smoke">
         <classes>
             <class name="tests.okhttpapi.LoginTestsOkHTTP"/>
-            <class name="tests.okhttpapi.RegistrationTests"/>
-            <class name="tests.okhttpapi.AddCarTests"/>
+            <class name="tests.restassured.LoginAssuredTests"/>
+            <class name="tests.restassured.AddNewCarTests"/>
         </classes>
     </test>
     <!--    <test name="regression">-->

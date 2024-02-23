@@ -12,19 +12,40 @@ repositories {
 dependencies {
     implementation 'org.testng:testng:7.4.0'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-
+    //compileOnly 'org.projectlombok:lombok:1.18.30'
     compileOnly 'org.projectlombok:lombok:1.18.28'
     annotationProcessor 'org.projectlombok:lombok:1.18.28'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.28'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
-
+    // https://square.github.io/okhttp/
+    //implementation "com.squareup.okhttp3:okhttp:4.11.0"
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-
+    // from https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.jayway.restassured:rest-assured:2.9.0'
+
 }
 
 test {
     useTestNG()
+}
+task reg(type: Test) {
+    useTestNG {
+        def suite = System.getProperty('suite', '')
+        if (suite.equals('smoke')) {
+            suites 'src/test/resources/smoke.xml'
+        } else {
+            suites 'src/test/resources/testng.xml'
+        }
+
+        def groups = System.getProperty('groups', '')
+        if (groups != null) {
+            includeGroups(groups)
+        }
+
+        if (project.hasProperty('target')) {
+            systemProperty 'target', "${target}"
+        }
+    }
 }

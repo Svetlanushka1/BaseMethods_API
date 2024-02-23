@@ -1,7 +1,7 @@
-package api;
+package api_restassured;
 
 import com.jayway.restassured.response.Response;
-import dto.AuthDTO;
+import dto.AuthResponseToken;
 import dto.UserDTO;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -23,7 +23,7 @@ import static com.jayway.restassured.RestAssured.given;
             if(responseLogin == null) {
                 getResponseLogin(user);
             }
-            return responseLogin.getBody().as(AuthDTO.class).getAccessToken();
+            return responseLogin.getBody().as(AuthResponseToken.class).getAccessToken();
         }
             /*
     public String getToken() {

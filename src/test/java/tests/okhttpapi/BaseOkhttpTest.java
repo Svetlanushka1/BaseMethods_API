@@ -1,24 +1,25 @@
-package tests.restassured;
+package tests.okhttpapi;
 
 import api_restassured.CarController;
-import api_restassured.UserAPI;
-import dto.UserDTO;
-
-import org.testng.annotations.BeforeSuite;
-import org.testng.asserts.SoftAssert;
+import com.google.gson.Gson;
 import data.RandomUtils;
+import dto.UserDTO;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import org.testng.annotations.BeforeSuite;
 import data.ConfigProperties;
 
-public class BaseAPITest {
-    //String token = "";
-    String token ="";//!= null
-    UserAPI userAPI = new UserAPI();
-    CarController carController = new CarController();
-    SoftAssert softAssert = new SoftAssert();
+public class BaseOkhttpTest {
+   // public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
+    public static final MediaType JSON = MediaType.get("application/json");
+    Gson gson = new Gson();
+    OkHttpClient okhttpClient = new OkHttpClient();
+    UserDTO userDTO;
+    CarController carController;
     RandomUtils randomUtils = new RandomUtils();
-
+    String token;
+    // String baseUrl = "https://ilcarro-backend.herokuapp.com";
     public String BASE_URI = "https://ilcarro-backend.herokuapp.com";
-    //public String BASE_URI = ConfigProperties.getProperty("url");
     public String apiLoginURI = "/v1/user/login/usernamepassword";
     public String authHeader = "Authorizations";
     public String endPointCarAdd = "/v1/cars";
@@ -26,6 +27,7 @@ public class BaseAPITest {
     public String endPointCarSearch = "/v1/cars/search";
     public String endPointGetCars = "/v1/cars/my";
     public String endPointCarBooking = "/v1/cars/{serialNumber}/booking";
+
     UserDTO userHardCode = UserDTO.builder()
             .username("testqa20@gmail.com")
             .password("123456Aa$")
@@ -36,15 +38,26 @@ public class BaseAPITest {
             .build();
     //TODO use BASE_URI and endpoints
 
-  /*  @BeforeSuite(alwaysRun = true)
-    public void getToken() {
-        // get token from API response to the service user
-        token = userAPI.getToken(userHardCode);
-        System.out.println(token);
-    }*/
-  @BeforeSuite(alwaysRun = true)
-  public void getToken(){
-      token = userAPI.getToken(userFromProperty);
-      System.out.println("token: " + token);
-  }
+
+
+
+
+    @BeforeSuite
+    public void setUp() {
+
+    }
+    /*
+
+
+//    public String getToken() {
+//        return token;
+//    }
+
+//    public void setToken(UserDTO userDTO) {
+//        AuthenticationController authenticationController = new AuthenticationController();
+//        token = authenticationController.setTokenFromResponse(userDTO);
+//        System.out.println("token from base api " + token);
+//    }
+
+     */
 }

@@ -1,4 +1,4 @@
-package api;
+package api_restassured;
 
 public class BaseAPI {
     String baseUrl =  "https://ilcarro-backend.herokuapp.com";

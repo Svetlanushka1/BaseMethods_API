@@ -1,11 +1,12 @@
 package tests.restassured;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class AuthTests extends BaseAPITest{
 
-    @Test
+    @Test(dataProviderClass = DataProvider.class)
     public void loginApiTest() {
         softAssert.assertEquals(100, 200,
                 "100 not equal 200");
@@ -21,7 +22,7 @@ public class AuthTests extends BaseAPITest{
         Assert.assertEquals(100, 200,
                 "100 not equal 200");
 
-        Assert.assertEquals(userAPI.getStatusCodeResponseLogin(userFromProperty), 201,
+        Assert.assertEquals(userAPI.getStatusCodeResponseLogin(userHardCode), 201,
                 "status code not 200");
 
     }

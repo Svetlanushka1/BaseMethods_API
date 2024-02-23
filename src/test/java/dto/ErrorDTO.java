@@ -24,6 +24,7 @@ path	string
     int status;
     String error;
     //Object message;
+    //ErrorDTO messageErrorDTO;
     String message;
     String path;
 

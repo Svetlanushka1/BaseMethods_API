@@ -3,12 +3,22 @@ package tests.restassured;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import dto.AuthRequestDTO;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import property.ConfigProperties;
+import data.ConfigProperties;
 
 import static org.hamcrest.Matchers.anything;
+import data.DataProviderLogin;
 
 public class LoginAssuredTests extends BaseAPITest {
+    @DataProvider(name = "loginData")
+    public Object[][] loginData() {
+        return new Object[][]{
+                {"testqa20@gmail.com", "123456Aa$"},
+                {"testqa201@gmail.com", "123456Aa$"},
+                {"testqa202@gmail.com", "123456Aa$"}
+        };
+    }
 
     @Test
     public void loginPositiveStep1() {
@@ -30,7 +40,7 @@ public class LoginAssuredTests extends BaseAPITest {
                 .assertThat().body("token", anything());
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void loginPositiveStep2() {
         String loginURI = "https://ilcarro-backend.herokuapp.com/v1/user/login/usernamepassword";
         AuthRequestDTO loginBody = AuthRequestDTO.builder()
@@ -50,6 +60,7 @@ public class LoginAssuredTests extends BaseAPITest {
                 .assertThat().body("token", anything());
     }
 
+   // @Test(dataProvider = "loginCSV",dataProviderClass = DataProviderLogin.class)
     @Test
     public void loginPositiveUsingProperties() {
 

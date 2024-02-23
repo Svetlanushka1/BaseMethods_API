@@ -1,5 +1,6 @@
 package tests.restassured;
 
+import com.jayway.restassured.response.Response;
 import dto.CarDTO;
 import org.testng.annotations.Test;
 
@@ -20,14 +21,40 @@ public class DeleteCarTests extends BaseAPITest {
                 .about("fff")
                 .city("Tel Aviv")
                 .build();
-        softAssert.assertEquals(carsAPI.getStatusCodeResponseAddNewCar(addNewCar, token), 200,
+        softAssert.assertEquals(carController.getStatusCodeResponseAddNewCar(addNewCar, token), 200,
                 "status code for add new car not 200");
 //        softAssert.assertEquals(carsAPI.getMessageResponseAddNewCar(addNewCar, token),
 //                "Car added successfully");
-        softAssert.assertEquals(carsAPI.getStatusCodeDeleteCar(serNumber, token), 200,
+        softAssert.assertEquals(carController.getStatusCodeDeleteCar(serNumber, token), 200,
                 "status code for delete car not 200");
-        softAssert.assertEquals(carsAPI.getMessageDeleteCar(serNumber, token), "Car deleted successfully");
-        System.out.println(carsAPI.getMessageDeleteCar(serNumber, token));
+        softAssert.assertEquals(carController.getMessageDeleteCar(serNumber, token), "Car deleted successfully");
+        System.out.println(carController.getMessageDeleteCar(serNumber, token));
         softAssert.assertAll();
+    }
+    @Test
+    public void addNewCarPositive() {
+        String serNumber = randomUtils.generateRandomString(10);
+
+        CarDTO carDTO = CarDTO.builder()
+                .serialNumber(serNumber)
+                .manufacture("opel")
+                .model("corsa")
+                .year(Integer.parseInt("2000"))
+                .fuel("Petrol")
+                .seats(2)
+                .carClass("first")
+                .pricePerDay(25)
+                .about("blabla")
+                .city("Tel Aviv")
+                .build();
+
+        Response response = carController.requestNewCar(carDTO, token);
+
+        response.then().assertThat().statusCode(200);
+
+        response = carController.requestDeleteCar(serNumber, token);
+
+        response.then().assertThat().statusCode(400);
+
     }
 }

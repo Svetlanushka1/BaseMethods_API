@@ -54,7 +54,11 @@ bookedPeriods	[...]
     String about;
     String city;
 
-
+    double lat;
+    double lng;
+    String image;
+    String owner;
+    BookedPeriodsListDTO bookedPeriods;
 
 
 
